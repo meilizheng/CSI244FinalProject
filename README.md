@@ -2,7 +2,7 @@ CSI244FinalProject
 Description
 This project is aimed at creating a bookbuddy API.
 
-- Part 1: Setting up the Environment.
+-- Part 1: Setting up the Environment.
 - To initialize the Node.js environment and install necessary packages, follow these steps:
 
 - Create directories for screenshots and the API:
@@ -32,12 +32,12 @@ This project is aimed at creating a bookbuddy API.
 •	Create a new file named server.js in the root folder of bookbuddyapi.
 - Step 1: Create the Model
 •	The Model represents the data structure of the application. Define the schema and model for books in models/book.js.
-Step 2: Building a Controller
+- Step 2: Building a Controller
 •	Implement the logic for handling CRUD operations in controllers/bookController.js.
-Step 3: Setting Up the Routes
+- Step 3: Setting Up the Routes
 •	Define application routes in routes/bookRoutes.js.
-Step 4: Initializing Express and MongoDB
+- Step 4: Initializing Express and MongoDB
 •	Set up Express and connect to MongoDB in server.js.
 
-Part 3: Connect to server using Postman
+-- Part 3: Connect to server using Postman
 •	Once server is set up and running, I can connect to it using Postman to test the API endpoints.
