@@ -40,4 +40,4 @@ This project is aimed at creating a bookbuddy API.
 •	Set up Express and connect to MongoDB in server.js.
 
 -- Part 3: Connect to server using Postman
-•	Once server is set up and running, I can connect to it using Postman to test the API endpoints.
+•	Once server is set up and running, I can connect to it using Postman to test the API endpoints.    
