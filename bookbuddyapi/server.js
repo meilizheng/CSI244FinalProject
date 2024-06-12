@@ -22,6 +22,8 @@ const authorRoutes = require("./routes/authorRoutes.js");
 
 const userRoutes = require("./routes/UserRoutes");
 
+const postRoutes = require("./routes/postsRoutes");
+
 dotenv.config();
 
 //Connect to MongoDB database using the URI specified in the MONGO_URI environment variable
@@ -41,6 +43,7 @@ app.use(cors());
 app.use("/api/books", bookRoutes);
 app.use("/api/authors", authorRoutes);
 app.use("/api/users", userRoutes);
+app.use("/api/posts", postRoutes);
 
 //Start the server
 app.listen(port, () => {

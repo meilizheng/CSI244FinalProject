@@ -48,6 +48,7 @@ exports.updateBook = async (req, res) => {
                 genre: req.body.genre,
                 author: req.body.author,
                 user: req.body.user,
+                reviews: req.body.reviews,
             },
             {new: true }
         );
