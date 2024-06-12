@@ -1,4 +1,5 @@
 const User = require("../models/User.js");
+const TokenBlacklist = require("../models/TokenBlacklist");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
@@ -74,6 +75,22 @@ exports.login = async (req, res) => {
         res.header("auth-token", token).send(token);
     } catch (err) {
         res.status(400).send(err);
+    }
+};
+
+exports.logout = async (req, res) => {
+    try {
+        // Extract the token from the header
+        const token = req.header("auth-token");
+        if (!token) return res.status(401).send("Access Denied"); // Use 401 for unauthorized
+
+        // Add the token to the blacklist
+        const tokenToBlacklist = new TokenBlacklist({ token });
+        await tokenToBlacklist.save();
+
+        res.send("Logged out successfully");
+    } catch (err) {
+        res.status(500).json({ message: err.message });
     }
 };
 
