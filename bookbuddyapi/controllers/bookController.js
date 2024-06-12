@@ -10,19 +10,6 @@ exports.createBook = async (req, res) => {
     } catch (error) {
         res.status(500).send(error);
     }
-    // const book = new Book({
-    //     title: req.body.title, 
-    //     description: req.body.description, 
-    //     isbn: req.body.isbn, 
-    //     genre: req.body.genre,
-    //     author: req.body.author,
-    //      });
-    // try {
-    //     const newBook = await book.save();
-    //     res.status(201).json(newBook);
-    // } catch(error) {
-    //     res.status(400).json({message: error.message});
-    // }
 };
 
 //Get all books
@@ -60,6 +47,7 @@ exports.updateBook = async (req, res) => {
                 isbn: req.body.isbn,
                 genre: req.body.genre,
                 author: req.body.author,
+                user: req.body.user,
             },
             {new: true }
         );
