@@ -3,18 +3,26 @@ const Book = require("../models/book.js");
 //Create a new book, receive the data from the request body
 //Send the new book to json file with status code 201 if succseful
 exports.createBook = async (req, res) => {
-    const book = new Book({
-        title: req.body.title, 
-        description: req.body.description, 
-        isbn: req.body.isbn, 
-        genre: req.body.genre, 
-        author: req.body.author });
     try {
-        const newBook = await book.save();
-        res.status(201).json(newBook);
-    } catch(error) {
-        res.status(400).json({message: error.message});
+        const book = new Book(req.body);
+        await book.save();
+        res.send(book);
+    } catch (error) {
+        res.status(500).send(error);
     }
+    // const book = new Book({
+    //     title: req.body.title, 
+    //     description: req.body.description, 
+    //     isbn: req.body.isbn, 
+    //     genre: req.body.genre,
+    //     author: req.body.author,
+    //      });
+    // try {
+    //     const newBook = await book.save();
+    //     res.status(201).json(newBook);
+    // } catch(error) {
+    //     res.status(400).json({message: error.message});
+    // }
 };
 
 //Get all books
@@ -75,3 +83,47 @@ exports.deleteBook = async (req, res) => {
         res.status(500).json({message: err.message });
     }
 };
+//get all books by a specific author
+//This is requires an authorID is sent as a parameter
+exports.getBooksByAuthor = async (req, res) => {
+    try {
+        const books = await Book.find({ author: req.params.authorId});
+        res.send(books);
+    } catch (error) {
+        res.status(500).json({message: err.message});
+    }
+};
+
+//get all books by a specific user
+exports.getBooksByUser = async (req, res) => {
+    try {
+        const books = await Book.find({user: req.params.userId});
+        res.send(books);
+    } catch (error) {
+        res.status(500).json({message: err.message});
+    }
+};
+//get only the reveiew of a book
+//This is takes a post id and returns the comments of the post
+exports.getReviews = async (req, res) => {
+    try {
+        const book = await Book.findById(req.params.id);
+        res.send(book.reviews);        
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
+//This takes a book id and adds the review to the book
+exports.addReview = async (req, res) => {
+    try {
+        console.log(req.body);
+        const book = await Book.findById(req.params.id);
+        book.reviews.push(req.body);
+        await book.save();
+        res.send(book);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+};
+
