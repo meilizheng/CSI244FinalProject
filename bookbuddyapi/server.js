@@ -15,7 +15,7 @@ const dotenv = require("dotenv");
 
 //Import the CORS middleware for enabling Cross-Origin Resource sharing
 const cors = require("cors");
-
+// Import route modules
 const bookRoutes = require("./routes/bookRoutes.js");
 
 const authorRoutes = require("./routes/authorRoutes.js");
@@ -24,6 +24,7 @@ const userRoutes = require("./routes/UserRoutes");
 
 const postRoutes = require("./routes/postsRoutes");
 
+// Load environment variables from a .env file into process.env
 dotenv.config();
 
 //Connect to MongoDB database using the URI specified in the MONGO_URI environment variable

@@ -1,10 +1,10 @@
 // Example of defining a TokenBlacklist model using Mongoose
 const mongoose = require("mongoose");
-
+// Define a schema for the TokenBlacklist model
 const tokenBlacklistSchema = new mongoose.Schema({
     token: {
         type: String,
-        required: true,
+        required: true,  // Token field is required
     },
     createdAt: {
         type: Date,
